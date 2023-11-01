@@ -3,6 +3,7 @@ from __future__ import annotations
 import itertools
 
 from typing import TYPE_CHECKING
+from typing import ClassVar
 
 from cleo.helpers import option
 from poetry.console.commands.env_command import EnvCommand
@@ -18,7 +19,7 @@ class LockedBuildCommand(EnvCommand):
     name = "lockedbuild"
     description = "Builds a wheel with locked packages from the poetry.lock."
 
-    options: list[Option] = [
+    options: ClassVar[list[Option]] = [
         option(
             long_name="with",
             description="The optional dependency groups to include.",

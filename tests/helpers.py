@@ -27,13 +27,11 @@ if TYPE_CHECKING:
 
 
 class FixtureCopier(Protocol):
-    def __call__(self, relative_path: str, target: Path | None = None) -> Path:
-        ...
+    def __call__(self, relative_path: str, target: Path | None = None) -> Path: ...
 
 
 class FixtureDirGetter(Protocol):
-    def __call__(self, name: str) -> Path:
-        ...
+    def __call__(self, name: str) -> Path: ...
 
 
 class CommandTesterFactory(Protocol):
@@ -44,8 +42,7 @@ class CommandTesterFactory(Protocol):
         installer: Installer | None = None,
         executor: Executor | None = None,
         environment: Env | None = None,
-    ) -> CommandTester:
-        ...
+    ) -> CommandTester: ...
 
 
 class ProjectFactory(Protocol):
@@ -57,8 +54,7 @@ class ProjectFactory(Protocol):
         pyproject_content: str | None = None,
         poetry_lock_content: str | None = None,
         install_deps: bool = True,
-    ) -> Poetry:
-        ...
+    ) -> Poetry: ...
 
 
 class PoetryTestApplication(Application):
