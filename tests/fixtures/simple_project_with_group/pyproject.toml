@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "my-package"
+version = "0.1"
+description = "Some description."
+authors = ["John Doe <john.doe@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+python-dateutil = "^2.8.2"
+
+[tool.poetry.group.my_group]
+optional = true
+
+[tool.poetry.group.my_group.dependencies]
+requests = "^2.31.0"
