@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-plugin-lockedbuild"
-version = "0.10.0"
+version = "0.10.1"
 description = "Poetry plugin to add support for building wheel files with locked packages from the poetry.lock"
 authors = ["Milan Unicsovics <u.milan@gmail.com>"]
 license = "MIT"
@@ -19,7 +19,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-poetry = "1.5.0"
+poetry = "^1.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
