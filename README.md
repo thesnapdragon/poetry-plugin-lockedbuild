@@ -1,5 +1,9 @@
 # Poetry Plugin: Locked Build
 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/thesnapdragon/poetry-plugin-lockedbuild/main.yml?logo=github)](https://github.com/thesnapdragon/poetry-plugin-lockedbuild/actions/workflows/main.yml)
+[![PyPI](https://img.shields.io/pypi/v/poetry-plugin-lockedbuild.svg)](https://pypi.org/project/poetry-plugin-lockedbuild/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/poetry-plugin-lockedbuild)](https://pypi.org/project/poetry-plugin-lockedbuild/)
+
 This package is a plugin that allows the building of wheel files with locked packages from `poetry.lock`.
 
 ## Installation
