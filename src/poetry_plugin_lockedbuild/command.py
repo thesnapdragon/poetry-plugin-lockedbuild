@@ -28,7 +28,7 @@ class LockedBuildCommand(EnvCommand):
         ),
     ]
 
-    loggers: list[str] = ["poetry.core.masonry.builders.wheel"]
+    loggers: ClassVar[list[str]] = ["poetry.core.masonry.builders.wheel"]
 
     def handle(self) -> int:
         with_groups = list(itertools.chain.from_iterable([group.split(",") for group in self.option("with")]))

@@ -10,7 +10,7 @@ from poetry.core.packages.utils.link import Link
 from poetry.factory import Factory
 from poetry.packages import Locker
 from poetry.repositories import Repository
-from poetry.repositories.exceptions import PackageNotFound
+from poetry.repositories.exceptions import PackageNotFoundError
 
 
 if TYPE_CHECKING:
@@ -110,7 +110,7 @@ class TestRepository(Repository):
     def find_packages(self, dependency: Dependency) -> list[Package]:
         packages = super().find_packages(dependency)
         if len(packages) == 0:
-            raise PackageNotFound(f"Package [{dependency.name}] not found.")
+            raise PackageNotFoundError(f"Package [{dependency.name}] not found.")
 
         return packages
 
