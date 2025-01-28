@@ -4,8 +4,10 @@ from typing import TYPE_CHECKING
 from typing import Sequence
 
 from cleo.io.null_io import NullIO
+from poetry.core.constraints.generic import parse_constraint
 from poetry.core.masonry.builders.wheel import WheelBuilder
 from poetry.core.packages.dependency_group import MAIN_GROUP
+from poetry.core.packages.utils.utils import create_nested_marker
 from poetry.puzzle import Solver
 from poetry.repositories import Repository
 from poetry.repositories import RepositoryPool
@@ -37,7 +39,7 @@ class LockedWheelBuilder(WheelBuilder):
         self._with_groups = list(with_groups)
 
     def prepare_metadata(self, metadata_directory: Path) -> Path:
-        in_extras = {dependency.pretty_name: dependency.in_extras for dependency in self._poetry.package.requires}
+        dependencies = {dependency.pretty_name: dependency for dependency in self._poetry.package.requires}
 
         self._meta.requires_dist = []
         for package in self._resolved_packages:
@@ -46,8 +48,8 @@ class LockedWheelBuilder(WheelBuilder):
             package.python_versions = "*"
 
             dependency = package.to_dependency()
-            if name in in_extras:
-                dependency.in_extras.extend(in_extras[name])
+            if name in dependencies and dependencies[name].in_extras:
+                dependency.marker = create_nested_marker("extra", parse_constraint(dependencies[name].in_extras[0]))  # type: ignore[assignment]
 
             self._meta.requires_dist.append(dependency.to_pep_508())
 

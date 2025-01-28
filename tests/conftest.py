@@ -238,7 +238,7 @@ def project_factory(
         poetry = Factory().create_poetry(project_dir)
 
         if use_test_locker:
-            locker = TestLocker(poetry.locker.lock, locker_config or poetry.locker._local_config)
+            locker = TestLocker(poetry.locker.lock, locker_config or poetry.locker._pyproject_data["tool"]["poetry"])
             locker.write()
 
             poetry.set_locker(locker)
